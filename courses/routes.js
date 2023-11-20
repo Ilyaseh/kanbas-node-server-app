@@ -2,9 +2,6 @@ import Database from "../Database/index.js";
 function CourseRoutes(app) {
   app.get("/api/courses/:id", (req, res) => {
     const { id } = req.params;
-
-    console.log("Requested course ID:", id);
-
     const course = Database.courses.find((c) => c._id.$oid === id);
     if (!course) {
       res.status(404).send("Course not found");
@@ -22,8 +19,6 @@ function CourseRoutes(app) {
         res.sendStatus(204);
       });
     
-    
-    
       app.delete("/api/courses/:id", (req, res) => {
         const { id } = req.params;
         Database.courses = Database.courses
@@ -31,13 +26,8 @@ function CourseRoutes(app) {
         res.sendStatus(204);
       });
     
-    
       app.post("/api/courses", (req, res) => {
-        console.log("Received course data:", req.body);
-
         const course = { ...req.body, _id: new Date().getTime().toString() };
-        console.log("Course to be added:", course);
-
         Database.courses.push(course);
         res.send(course);
       });

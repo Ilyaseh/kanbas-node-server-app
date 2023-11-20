@@ -7,18 +7,10 @@ import ModuleRoutes from "./modules/routes.js";
 import "dotenv/config";
 
 const app = express();
-
-// Use CORS middleware
 app.use(cors());
-
-// Use express.json() middleware to parse JSON bodies
 app.use(express.json());
-
-// Define your routes
 ModuleRoutes(app);
 CourseRoutes(app);
 Lab5(app);
 Hello(app);
-
-// Start the server
 app.listen(process.env.PORT || 4000);
