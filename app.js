@@ -15,7 +15,7 @@ import session from "express-session";
 const app = express();
 app.use(cors({
     credentials: true,
-    origin: process.env.FRONTEND_URL
+    origin: "*"
 }));
 const sessionOptions = {
     secret: "mongodb+srv://ilyaselharoui:Voetbal17@cluster0.xl2prxj.mongodb.net/?retryWrites=true&w=majority",
